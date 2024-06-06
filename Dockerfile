@@ -16,7 +16,7 @@ FROM alpine:3.15 as prometheus-exporter-builder
 WORKDIR /build
 RUN apk update
 RUN apk add --quiet ca-certificates curl wget tar gzip jq
-RUN curl -sL https://api.github.com/repos/jonnenauha/prometheus_varnish_exporter/releases/latest | jq -r '.assets[] | select(.name | contains ("linux-386.tar.gz")) | .browser_download_url' | xargs wget -O prometheus_varnish_exporter.linux-386.tar.gz
+RUN curl -sL https://api.github.com/repos/jonnenauha/prometheus_varnish_exporter/releases/latest | jq -r '.assets[] | select(.name | contains ("linux-amd64.tar.gz")) | .browser_download_url' | xargs wget -O prometheus_varnish_exporter.linux-386.tar.gz
 RUN tar -zxvf prometheus_varnish_exporter.linux-386.tar.gz && mv ./prometheus_varnish_exporter-*/prometheus_varnish_exporter /prometheus_varnish_exporter
 
 # Make sure we can run this binary
